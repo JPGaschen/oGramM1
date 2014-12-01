@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Orthographe grammaticale</title>
+<script type="text/javascript" src="jquery.js"></script>
+
+<script type="text/javascript" src="oGram14.js"></script>
+<script type="text/javascript" src="boutons14.js"></script>
+<link rel="stylesheet" type="text/css" href="oGramM1.css">
+
+<style type="text/css"> 
+
+table {
+  table-layout:fixed;
+  left : 0px;
+}
+
+
+
+div.textinput {
+ position: absolute;
+ top: 655px; left: 50px;
+ height: 40px; width: 980px;
+ background-color: #00ff00;
+ text-align:center;
+ z-index: 3;}
+
+
+ div.centre {
+ position: absolute;
+ top: 122px; left: 100px;
+ height: 456px; width: 880px;
+ border-radius: 25px;
+ background-color: rgba(0,255,0,0.5);
+ z-index: 2;}
+ 
+div.mots{
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:220px;
+  height:76px;
+  line-height: 40px;
+  font-size:32px;
+  background-color: rgba(0,255,0,0.1);
+  color:#000000;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top: 20px;
+  z-index: 3;
+
+}
+</style>
+<script language=javascript>
+
+$(window).load(function(){
+  //parent.ajusteVert();
+  $(document).contextmenu(function (e) {
+     //console.log(e);
+     return false;
+  });
+  init();
+});
+
+</script>
+</head>
+
+<body unselectable='on'>
+
+<div class = "bordnoir">
+<div class = "bordvert bgC1" style="border-radius: 25px">
+<div id='verticalContainerG'>
+<div unselectable='on' class='unselectable' Id ="application" style="font-size:24px; vertical-align:middle; text-align:center; " >Orthographe grammaticale</div>
+</div>
+<div id='verticalContainerD'>
+<div unselectable='on' class='unselectable' Id ="module" style="font-size:24px; vertical-align:middle; text-align:center; " ></div>
+</div>
+<div style="position:absolute; top:5px; left:50px;width:980px;height:40px;">
+ <div unselectable='on' class='unselectable' Id ="titre" style="font-size:24px;vertical-align:middle;text-align:center"></div>
+</div>
+
+
+<div>
+<img unselectable="on" src="fondM1c.gif" width="980px" height="600px" style="position:absolute;top:50px; left:50px; border-radius: 25px;">
+<div class = "centre bgC1" id="bordBlanc">
+
+<div unselectable='on' Id="t01" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t02" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t03" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t04" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t05" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t06" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t07" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t08" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t09" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t10" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t11" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t12" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t13" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t14" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t15" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t16" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t17" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t18" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t19" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t20" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t21" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t22" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t23" class="mots bgC1 unselectable"></div>
+<div unselectable='on' Id="t24" class="mots bgC1 unselectable"></div>
+
+<img id="pointerimg" style="visibility:hidden;position:absolute;top:710px;left:500px;z-index:20;" SRC="fing5_nw.gif" />
+</div>
+
+</div>
+
+<div Id="phraseDiv" class="textinput bgC2" >
+  <span Id ="phrase" style="font-size:26px; vertical-align:center";></span>
+</div>
+
+
+
+
+
+</div>
+</div>
+
+</body>
+</html>

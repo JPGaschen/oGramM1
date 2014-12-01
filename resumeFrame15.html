@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Orthographe grammaticale</title>
+<script type="text/javascript" src="jquery.js"></script>
+
+<script type="text/javascript" src="oGram15.js?version=47"></script>
+
+<link rel="stylesheet" type="text/css" href="oGramM1.css">
+
+<style type="text/css"> 
+
+div.resume{
+ position: absolute;
+ top: 50px; left: 50px;
+ height: 600px; width: 980px;
+ background-color: #999999;
+ z-index: 10;
+}
+ 
+div.resume2{
+  overflow: scroll;
+ overflow-x: hidden;
+ -webkit-overflow-scrolling: touch;}
+
+</style>
+
+<script type="text/javascript">
+
+function initResume() {
+  //parent.ajusteVert();
+  //console.log("init resumeFrame");
+  myFrames = window.frames;
+
+  if (navigator.platform !== 'iPad') {
+    $('p',myFrames['Resume2'].document).addClass('hidden');
+    $('tr',myFrames['Resume2'].document).addClass('hidden');
+    $('tr p',myFrames['Resume2'].document).removeClass('hidden');
+    
+    $('.hidden',myFrames['Resume2'].document).hide();
+    continuer();
+    //document.getElementById("Resume").style.visibility='visible';
+    myFrames['Resume2'].window.scrollTo(0,3000); //
+   
+  } else document.getElementById("Bcontinuer").style.visibility='hidden';
+  document.getElementById("Resume").style.visibility='visible';
+  document.getElementById("Resume2").style.visibility='visible';
+  
+  document.getElementById("titre").innerHTML = parent.ba.titre;
+  document.getElementById("module").innerHTML = parent.ba.module;
+  
+}
+
+</script>
+</head>
+<body unselectable='on' class='unselectable' onLoad="javascript:initResume();">
+<div class = "bordnoir">
+<div class = "bordvert bgC1" style="border-radius: 25px;">
+<div class="resume" id="Resume" style="visibility:hidden">
+<iframe id="Resume2" name="Resume2" src="resumeP1A5.html?version=47" style="position:absolute; top:3px; left:3px; background-color: #ffffff;" height=494 width=974 frameborder=0 scrolling = yes>
+</iframe>
+<button Id="Bcontinuer" style="position:absolute; top:530px; left:425px; z-index: 20; width:130px; height:40px;font-size:24px;text-align:center;border-radius: 15px;" onclick = "javascript:continuer();"  type="button">Continuer</button>
+</div>
+
+
+<div id='verticalContainerG'>
+<div unselectable='on' Id ="application" style="font-size:24px; vertical-align:middle; text-align:center; " >Orthographe grammaticale</div>
+</div>
+<div id='verticalContainerD'>
+<div unselectable='on' Id ="module" style="font-size:24px; vertical-align:middle; text-align:center; " ></div>
+</div>
+<div style="position:absolute; top:5px; left:50px;width:980px;height:40px;">
+ <div unselectable='on' Id ="titre" style="font-size:24px;vertical-align:middle;text-align:center"></div>
+</div>
+
+</div>
+</div>
+</body>

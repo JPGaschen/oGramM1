@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title></title>
+   
+  
+   
+  <script type="text/javascript" src="jquery.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="oGramM1.css">
+  
+  <style type="text/css"> 
+  
+  <style type="text/css"> 
+
+body {
+ font-family: "Comic Sans MS", sans-serif;
+}
+  div.exercice {
+   position: absolute;
+   top: 50px;
+   height: 20px; width: 20px;
+   background-color: #ffffff;
+   border-style : solid;
+   border-width : 1px;
+   border-color: #000000;
+   visibility : hidden;
+   z-index: 1;}
+   
+
+
+</style>
+
+<script type="text/javascript">
+  var program = 0;
+  var activity = 0;
+  var serie = 0;
+  var group = 0;
+  var version = 8;
+  var titre = '';
+  var module = '';
+  var activites =[
+   [],
+   ["Reconnaitre un nom, un déterminant, un adjectif",1,6,1],
+   ["Se familiariser avec les différentes sortes de noms",1,10,0],
+   ["Accorder les noms avec leurs déterminants",1,14,1],
+   ["Se familiariser avec les différentes sortes d'adjectifs",1,10,0],
+   ["Accorder les adjectifs avec les noms",1,12,1],
+   ["Maitriser l'accord déterminant, nom, adjectif",1,6,0],
+   ["Se tester",0,2,0]
+  ];
+  
+  
+  $(document).ready( function () {
+    init();
+  });
+
+function init() {
+  ////console.log("banner init");
+
+
+}
+function hideCarres () {
+  $(".exercice").each(function() {
+    $(this).css("visibility","hidden");
+    $(this).css("backgroundColor","#ffffff");
+  });
+  parent.ba.document.getElementById("Binformation").style.visibility = 'hidden';
+}
+function showCarres (n1,n2) {
+  //console.log("showCarres " + n1 + " , " + n2);
+  $(".exercice").each(function() {
+    $(this).css("visibility","visible");
+    $(this).css("backgroundColor","#ffffff");
+    var ind = 1 + $(".exercice").index(this);
+    if (ind <= n1) {
+      var top = 60 + (ind-1)*25;
+      $(this).css("top","" + top + "px");
+      var leftPos = 30;
+      $(this).css("left","" + leftPos + "px");
+    } else  if (ind <= n1 + n2){
+      var top = 60 + (ind-n1-1)*25;
+      $(this).css("top","" + top + "px");
+      
+      var leftPos = 60;
+      $(this).css("left","" + leftPos + "px");
+    } else {$(this).css("visibility","hidden");}
+    
+    
+  });
+  
+}
+
+function information () {
+  //console.log("Information tbi");
+  var txt = "<div>";
+  txt += "<a href='Releve resultats mod 1-2.pdf' style='position: absolute; top: 50px; left: 50px; font-size:30px;' target='_blank'>Relevé de résultats</a>";
+  parent.og.document.getElementById('zm').innerHTML = txt + "</div>";
+  parent.enableBouton('displayMenu','menuC.gif');
+}
+  </script>
+  </head>
+  <body>
+ 
+  
+  <div class="exercice" id = "c1" ></div>
+  <div class="exercice" id = "c2" ></div>
+  <div class="exercice" id = "c3" ></div>
+  <div class="exercice" id = "c4" ></div>
+  <div class="exercice" id = "c5" ></div>
+  <div class="exercice" id = "c6" ></div>
+  <div class="exercice" id = "c7" ></div>
+  <div class="exercice" id = "c8" ></div>
+  <div class="exercice" id = "c9" ></div>
+  <div class="exercice" id = "c10"></div>
+  <div class="exercice" id = "c11"></div>
+  <div class="exercice" id = "c12"></div>
+  <div class="exercice" id = "c13"></div>
+  <div class="exercice" id = "c14"></div>
+  <div class="exercice" id = "c15"></div>
+  <div class="exercice" id = "c16"></div>
+  <div class="exercice" id = "c17"></div>
+  <div class="exercice" id = "c18"></div>
+  <div class="exercice" id = "c19"></div>
+  <div class="exercice" id = "c20"></div>
+  <div class="exercice" id = "c21"></div>
+  <div class="exercice" id = "c22"></div>
+  <div class="exercice" id = "c23"></div>
+  <div class="exercice" id = "c24"></div>
+  <div class="exercice" id = "c25"></div>
+  <div class="exercice" id = "c26"></div>
+  <div class="exercice" id = "c27"></div>
+  <div class="exercice" id = "c28"></div>
+  <div class="exercice" id = "c29"></div>
+  <div class="exercice" id = "c30"></div>
+  <div class="exercice" id = "c31"></div>
+  <div class="exercice" id = "c32"></div>
+  <div class="exercice" id = "c33"></div>
+  <div class="exercice" id = "c34"></div>
+  <div class="exercice" id = "c35"></div>
+  <div class="exercice" id = "c36"></div>
+  <div class="exercice" id = "c37"></div>
+  <div class="exercice" id = "c38"></div>
+  <div class="exercice" id = "c39"></div>
+  <div class="exercice" id = "c40"></div>
+  <img src='informationC.gif' width=60 height=60 alt='Information' title='Information' Id="Binformation" style="position:absolute; top:600px; right:20px; z-index:20; visibility:hidden;border-radius:10px;"  onclick = "javascript:information();"  />
+</body>
+</html>

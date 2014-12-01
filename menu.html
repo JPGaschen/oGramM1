@@ -1,0 +1,432 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <title></title>
+  <script type="text/javascript" src="jquery.js"></script>
+  <link rel="stylesheet" type="text/css" href="oGramM1.css">
+  
+<style type="text/css"> 
+
+
+
+
+</style>
+
+<script type="text/javascript">
+
+$(window).load( function () {
+  //parent.ajusteVert();
+ ////console.log("menu ready");
+ });
+ 
+var activites =[
+   [],
+   ["Reconnaitre un nom, un déterminant, un adjectif",1,6,1],
+   ["Se familiariser avec les différentes sortes de noms",1,10,0],
+   ["Accorder les noms avec leurs déterminants",1,14,1],
+   ["Se familiariser avec les différentes sortes d'adjectifs",1,10,0],
+   ["Accorder les adjectifs avec les noms",1,12,1],
+   ["Maitriser l'accord déterminant, nom, adjectif",1,6,0],
+   ["Se tester",0,2,0]
+  ];
+  
+  
+var series = [
+ [],
+ [
+  [],
+  ["startDemo(1,1,1);","Observer"],
+  ["startSerie(1,1,1,1);","Série 1"],
+  ["startSerie(1,1,2,1);","Série 2"],
+  ["startSerie(1,1,3,1);","Série 3"],
+  ["startSerie(1,1,4,1);","Série 4"],
+  ["startSerie(1,1,5,1);","Série 5"],
+  ["startSerie(1,1,6,1);","Série 6"],
+  ["displayResume(1,1);","Résumé"]
+ ],
+ [ 
+  [],
+  ["startDemo(1,2);","Observer"],
+  ["startSerie(1,2,1,1);","Série 1"],
+  ["startSerie(1,2,2,1);","Série 2"],
+  ["startSerie(1,2,3,1);","Série 3"],
+  ["startSerie(1,2,4,1);","Série 4"],
+  ["startSerie(1,2,5,1);","Série 5"],
+  ["startSerie(1,2,6,1);","Série 6"],
+  ["startSerie(1,2,7,1);","Série 7"],
+  ["startSerie(1,2,8,1);","Série 8"],
+  ["startSerie(1,2,9,1);","Série 9"],
+  ["startSerie(1,2,10,1);","Série 10"]
+ ],
+ [ 
+  [],
+  ["startDemo(1,3,1);","Observer"],
+  ["startSerie(1,3,1,1,1);","S1 Expérimenter"],
+  ["startSerie(1,3,1,2,1);","S1 S'évaluer"],
+  ["startSerie(1,3,2,1,2);","S2 Expérimenter"],
+  ["startSerie(1,3,2,2,2);","S2 S'évaluer"],
+  ["startSerie(1,3,3,1,3);" ,"S3 Expérimenter"],
+  ["startSerie(1,3,3,2,3);","S3 S'évaluer"],
+  ["startSerie(1,3,4,1,4);","S4 Expérimenter"],
+  ["startSerie(1,3,4,2,4);","S4 S'évaluer"],
+  ["startSerie(1,3,5,1,5);","S5 Expérimenter"],
+  ["startSerie(1,3,5,2,5);","S5 S'évaluer"],
+  ["startSerie(1,3,6,1,6);","S6 Expérimenter"],
+  ["startSerie(1,3,6,2,6);","S6 S'évaluer"],
+  ["startSerie(1,3,7,1,7);","S7 Expérimenter"],
+  ["startSerie(1,3,7,2,7);","S7 S'évaluer"],
+  ["displayResume(1,3);" ,"Résumé"]
+ ],
+ [ 
+  [],
+  ["startDemo(1,4);","Observer"],
+  ["startSerie(1,4,1,1);","Série 1"],
+  ["startSerie(1,4,2,1);","Série 2"],
+  ["startSerie(1,4,3,1);","Série 3"],
+  ["startSerie(1,4,4,1);","Série 4"],
+  ["startSerie(1,4,5,1);","Série 5"],
+  ["startSerie(1,4,6,1);","Série 6"],
+  ["startSerie(1,4,7,1);","Série 7"],
+  ["startSerie(1,4,8,1);","Série 8"],
+  ["startSerie(1,4,9,1);","Série 9"],
+  ["startSerie(1,4,10,1);","Série 10"]
+ ],
+ [ 
+  [],
+  ["startDemo(1,5,1);","Observer"],
+  ["startSerie(1,5,1,1,1);","S1 Expérimenter"],
+  ["startSerie(1,5,1,2,1);","S1 S'évaluer"],
+  ["startSerie(1,5,2,1,2);","S2 Expérimenter"],
+  ["startSerie(1,5,2,2,2);","S2 S'évaluer"],
+  ["startSerie(1,5,3,1,3);","S3 Expérimenter"],
+  ["startSerie(1,5,3,2,3);","S3 S'évaluer"],
+  ["startSerie(1,5,4,1,4);","S4 Expérimenter"],
+  ["startSerie(1,5,4,2,4);","S4 S'évaluer"],
+  ["startSerie(1,5,5,1,5);","S5 Expérimenter"],
+  ["startSerie(1,5,5,2,5);","S5 S'évaluer"],
+  ["startSerie(1,5,6,1,6);","S6 Expérimenter"],
+  ["startSerie(1,5,6,2,6);","S6 S'évaluer"],
+  ["displayResume(1,5);","Résumé"]
+ ],
+ [ 
+  [],
+  ["startDemo(1,6);","Observer"],
+  ["startSerie(1,6,1,1);","Série 1"],
+  ["startSerie(1,6,2,1);","Série 2"],
+  ["startSerie(1,6,3,1);","Série 3"],
+  ["startSerie(1,6,4,1);","Série 4"],
+  ["startSerie(1,6,5,1);","Série 5"],
+  ["startSerie(1,6,6,1);","Série 6"]
+ ],
+ [ 
+  [],
+  ["startSerie(1,7,1,2);","Test A"],
+  ["startSerie(1,7,2,2);","Test B"]
+ ]
+]
+
+
+
+var firstSound = true;
+// document.onclick = function (event) {
+//  var ev = event;
+//  menuClick(ev);
+// }
+  
+$(document).ready( function () {
+  window.setTimeout(initMenu,200);
+});
+
+function initMenu () {
+  var activity = parent.ba.activity;
+  parent.ba.document.getElementById("Binformation").style.visibility = 'hidden';
+  document.onclick = (function(e) {
+    //alert(firstSound); 
+    if (firstSound) {
+      parent.play_sound("silence");
+      firstSound = false;
+    }
+  });
+
+   $(document).contextmenu(function (e) {
+     //console.log(e);
+     return false;
+  });
+  //console.log("menu document ready for activity " + activity + " level " + parent.boutons.menuLevel);
+  if (activity > 0 && parent.boutons.menuLevel > 0) {
+    parent.ba.activity = 0;
+    page2(activity);
+    parent.boutons.menuLevel = 1;
+    //parent.ba.activity = 0;
+   
+  } else {  
+    parent.ba.activity = 0;
+    parent.boutons.menuLevel = 0;
+    parent.og.document.getElementById("titre").innerHTML = 'Module 1: Le groupe nominal (GN)';
+    var txt = "<div class='unselectable' style='position:absolute; left:50px; font-size:31px; width:880px;'>";
+    //console.log(txt);
+    var tPos;
+    for (var i=1; i<activites.length; i++)  {
+      tPos = 95 + 60*(i-1);  // was 60
+    //<a href="#" onclick="dosomething(); return(false);">Some text here</a>
+
+
+      //txt += "<a href='#'' id='m"+i+"' style='position:absolute; top:"+tPos+"px; color:#000000;text-decoration: none;border-style : solid; border-width : 1px; border-color: #000000; background-color : #00bb00;' onClick='page2("+i+")'>"+ activites[i][0]+ "</a>";
+      //txt += "<a draggable='false' href='#' id='m"+i+"' class='bgC1' style='position:absolute; top:"+tPos+"px; color:#000000;text-decoration: none; text-align:center; width:30px; padding-left:1px; height:50px;' onClick='page2("+i+")'>"+ i +  "</a>";
+      //txt += "<a draggable='false' href='#' id='n"+i+"' class='bgC1' style='position:absolute; top:"+tPos+"px; color:#000000;text-decoration: none; width:850px; left:30px; height:50px;' onClick='page2("+i+")'> - " + activites[i][0]+ "</a>";
+      txt += "<a draggable='false' href='#' id='m"+i+"' class='bgC1' style='position:absolute; top:"+tPos+"px; color:#000000;text-decoration: none; text-align:center; width:30px; padding-left:1px; height:50px;border-radius: 25px 0px 0px 25px;' onClick='page2("+i+")'>"+ i +  "</a>";
+      txt += "<a draggable='false' href='#' id='n"+i+"' class='bgC1' style='position:absolute; top:"+tPos+"px; color:#000000;text-decoration: none; width:850px; left:30px; height:50px;border-radius: 0px 25px 25px 0px;' onClick='page2("+i+")'> - " + activites[i][0]+ "</a>";
+
+    }
+    //console.log(txt);
+    document.getElementById('zm').innerHTML = txt + "</div>";
+    //parent.ajusteVert();
+    $('.unselectable').on( 'dragstart', function() { return false; } );
+    parent.ba.document.getElementById("Binformation").style.visibility = 'visible';
+  }
+
+  
+
+  //console.log("fin de menu on ready");
+
+}
+
+//function menuClick(event) {
+  //console.log("menu click level " + parent.boutons.menuLevel);
+  //if (parent.boutons.menuLevel > 0) return;
+  //console.log("activity " + parent.ba.activity);
+  //console.log("level " + parent.boutons.menuLevel);
+  //console.log(event.target.id);
+  //parent.vertStatus = 3 - parent.vertStatus;
+  //console.log("click in menu " + parent.vertStatus);
+  //parent.ajusteVert();
+//}
+
+function page2(activity) {
+  parent.ba.document.getElementById("Binformation").style.visibility = 'hidden';
+  //parent.ajusteVert();
+  parent.boutons.menuLevel = 1;
+  parent.ba.activity = activity;
+  parent.og.document.getElementById("titre").innerHTML =  'GN ' + activity.toString() + ' - ' + activites[activity][0];
+  parent.og.document.getElementById("module").innerHTML = '';
+  
+  parent.enableBouton('displayMenu','menuC.gif');
+  parent.disableBouton('Bconsigne','consigneD.gif');
+  parent.disableBouton('Bvalider','validerD.gif');
+  parent.disableBouton('Breecouter','ecouterD.gif');
+
+  
+  var txt = "<div class='bgC1 unselectable' style='position:absolute; left:20px; font-size:32px; width:940px'>";
+  if (activites[activity][1]) {
+    //txt += "<a href='#' class='bgC1 unselectable' style='text-decoration: none; position:absolute; left:380px; top:60px; font-size:32px; line-height:90px; width:180px; color:#000000;border-style : solid; border-width : 1px; border-color: #000000; text-align: center' onClick='"+series[activity][1][0]+";'>"+series[activity][1][1]+"</a>";
+    txt += "<a href='#' class='bgC1 unselectable' style='text-decoration: none; position:absolute; left:380px; top:60px; font-size:32px; line-height:90px; width:180px; color:#000000;border-style : solid; border-width : 1px; border-color: #000000; text-align: center;border-radius: 25px;' onClick='"+series[activity][1][0]+"'>"+series[activity][1][1]+"</a>";
+ //console.log(txt);
+  }
+  var tPos;
+  var lPos;
+  var txti;
+
+  var nSeries = activites[activity][2];
+  if (activity < 7) {
+    for (var i=1; i<=nSeries; i++)  {
+      var k = i + activites[activity][1];
+      if (nSeries < 9){
+        tPos = 255;
+        lPos = (940 - nSeries*90 - (nSeries -1)* 10)/2 + (i-1)*100;
+        txti = i.toString();
+      } else if (activity == 2 || activity == 4) {
+        txti = i.toString();
+        if (i <= nSeries/2) {
+          tPos = 205;
+          lPos = (940 - nSeries*45)/2 + (i-1)*100;
+        }else {
+          tPos = 305;
+          lPos = (940 - nSeries*45)/2 + (i-1 -nSeries/2)*100;
+        }
+      } else {
+        var grp = 1+parseInt((i-1) / 2);
+        var typ = 1 + ((i-1) % 2);
+        txti = grp.toString() + '-' + typ.toString();
+        if (i <= nSeries/2) {
+          tPos = 205;
+          lPos = (940 - nSeries*45)/2 + (i-1)*100;
+        }else {
+          tPos = 305;
+          lPos = (940 - nSeries*45)/2 + (i-1 -nSeries/2)*100;
+        }
+      }
+      //txt += "<a class='bgC1' draggable='false' href='#'  style='position:absolute; top:"+tPos+"px; left:"+lPos+"px; width:90px; height:90px; line-height:90px; color:#000000;text-decoration: none; border-style : solid; border-width : 1px; border-color: #000000; text-align: center' onClick='"+series[activity][k][0]+";'><span class='unselectable'>"+txti+"</span></a>";
+      txt += "<a class='bgC1' draggable='false' href='#'  style='position:absolute; top:"+tPos+"px; left:"+lPos+"px; width:90px; height:90px; line-height:90px; color:#000000;text-decoration: none; border-style : solid; border-width : 1px; border-color: #000000; text-align: center;border-radius: 25px;' onClick='"+series[activity][k][0]+";'><span class='unselectable'>"+txti+"</span></a>";
+    }
+  } else {
+    for (var i=1; i<=nSeries; i++)  {
+      var k = i + activites[activity][1];
+      tPos = 255;
+      lPos = 170 + (i-1)*400;
+    //txt += "<a draggable='false' href='#' class='bgC1' style='position:absolute; top:"+tPos+"px; left:"+lPos+"px; width:200px; height:90px; line-height:90px; color:#000000;text-decoration: none; border-style : solid; border-width : 1px; border-color: #000000; text-align: center' onClick='"+series[activity][k][0]+";'>"+series[activity][k][1]+"</a>";
+      txt += "<a draggable='false' href='#' class='bgC1' style='position:absolute; top:"+tPos+"px; left:"+lPos+"px; width:200px; height:90px; line-height:90px; color:#000000;text-decoration: none; border-style : solid; border-width : 1px; border-color: #000000; text-align: center;border-radius: 25px;' onClick='"+series[activity][k][0]+";'>"+series[activity][k][1]+"</a>";
+    }
+  }
+  
+  if (activites[activity][3]) {
+    var k = activites[activity][1] + activites[activity][2] + 1;
+    //txt += "<a draggable='false' href='#' class='bgC1' style='text-decoration: none; position:absolute; left:380px; top:450px; font-size:32px; width:180px; line-height:90px; color:#000000;border-style : solid; border-width : 1px; border-color: #000000; text-align: center' onClick='"+series[activity][k][0]+";'>"+series[activity][k][1]+"</a>";
+    txt += "<a draggable='false' href='#' class='bgC1' style='text-decoration: none; position:absolute; left:380px; top:450px; font-size:32px; width:180px; line-height:90px; color:#000000;border-style : solid; border-width : 1px; border-color: #000000; text-align: center;border-radius: 25px;' onClick='"+series[activity][k][0]+";'>"+series[activity][k][1]+"</a>";
+    //console.log(txt);
+  }
+  txt += "</div>";
+  //console.log(txt);
+  document.getElementById('zm').innerHTML = txt + "</div>";
+  $('.unselectable').on( 'dragstart', function() { return false; } );
+}
+
+
+function startDemo(l,m,n,k,g) {
+  parent.boutons.menuLevel = 2;
+  parent.ba.program = l;
+  parent.ba.activity = m;
+  parent.ba.serie = n;
+  parent.ba.group = 0;
+  if (g) parent.ba.group = g;
+
+  parent.isDemo = true;
+  parent.gPhase = 1;
+  
+  parent.ba.titre = 'GN ' + m.toString() + ' - ' + activites[m][0];
+  parent.ba.module = "Observer";
+  
+  if ((l==3 && m==4) || (l==4 && m==1)) {
+    var fname =  "corpus" + l.toString() + m.toString() + n.toString() + "Demo.html?version=47";
+  //console.log(fname);
+    parent.corpus.location = "corpus" + l.toString() + m.toString() + n.toString() + "Demo.html?version=47";
+    //parent.ba.document.getElementById("enCours").innerHTML="Programme " +  l.toString() + " Activité " + m.toString() + " Série " + n.toString() + " Observer ";
+  } else {
+    parent.corpus.location = "corpus" + l.toString() + m.toString() + "Demo.html?version=47";
+    //parent.ba.document.getElementById("enCours").innerHTML="Programme " +  l.toString() + " Activité " + m.toString() + " Observer ";
+  }
+  parent.enableBouton('displayMenu','menuC.gif');
+  
+  parent.disableBouton('Bvalider','validerD.gif');
+  parent.disableBouton('Bconsigne','consigneD.gif');
+  parent.disableBouton('Breecouter','ecouterD.gif');
+
+  $(parent.corpus.contentDocument).ready(function() {
+    //parent.ajusteVert();
+    //console.log("corpus is ready in menu demo");
+    //parent.og.location = "startPage" + l + ".html?version=47";
+  //parent.og.location = "frame" +  l + m + ".html?version=47";
+    //parent.boutons.location = "boutons.html?version=47"; 
+  });
+  
+}
+function startSerie(l,m,n,k,g) {
+  //parent.ajusteVert();
+  parent.boutons.menuLevel = 2;
+  var enCoursPhase = [
+    [],
+    [""," Expérimenter"," S'évaluer"],
+    [""," Expérimenter"," S'évaluer"],
+    [""," Expérimenter"," S'évaluer"],
+    [""," Expérimenter"," S'évaluer"],
+    [""," Expérimenter"," S'évaluer"],
+    [""," Expérimenter"," S'évaluer"],
+    [""," Expérimenter"," S'évaluer"]
+  ];
+  
+  
+  
+  parent.ba.program = l;
+  parent.ba.activity = m;
+  parent.ba.serie = n;
+  parent.ba.group = 0;
+  var phaseTxt = "";
+  var txtn = n.toString();
+  
+  if (k) {
+    parent.gPhase = k;
+    phaseTxt = enCoursPhase[l][k];
+  }
+  if (g) {
+    parent.ba.group = g;
+    txtn = g.toString() + '-' + k.toString();
+  }
+
+  parent.isDemo = false;
+  //alert(parent.ba.activity);
+  
+  if (m < 7) parent.ba.titre = 'GN ' + m.toString() + ' - ' + activites[m][0];
+  else parent.ba.titre = m.toString() + '- ' + activites[m][0];
+  if (m < 7) parent.ba.module = "Série " + txtn + phaseTxt;
+  else parent.ba.module =  series[m][n][1] + ' ' + phaseTxt;
+  parent.corpus.location = "corpus" + l.toString() + m.toString() + n.toString() + ".html?version=47";
+  
+  parent.enableBouton('displayMenu','menuC.gif');
+  
+  parent.disableBouton('Bvalider','validerD.gif');
+  parent.disableBouton('Bconsigne','consigneD.gif');
+  parent.disableBouton('Breecouter','ecouterD.gif');
+  
+  $(parent.corpus.contentDocument).ready(function() {
+  //console.log("corpus is ready in menu serie");
+    //parent.og.location = "frame" +  l + m + ".html?version=47";
+    //parent.boutons.location = "boutons.html?version=47";
+  });
+
+}
+
+function displayResume(l,m) {
+  parent.boutons.menuLevel = 2;
+  //parent.ajusteVert();
+  //console.log("displayResume");
+  //parent.boutons.location = "boutons.html?version=47";
+  parent.ba.program = l;
+  parent.ba.activity = m;
+  parent.ba.titre = "GN " + m + " - " + parent.ba.activites[m][0];
+  parent.ba.module = 'Résumé';
+  parent.og.location = "resumeFrame" +  l + m + ".html?version=47";
+
+  //parent.ba.document.getElementById("enCours").style.visibility="visible";
+  //parent.ba.document.getElementById("enCours").innerHTML="Programme " +  l.toString() + " Activité " + m.toString() + " Résumé ";
+  parent.enableBouton('Bconsigne','consigneC.gif');
+  parent.disableBouton('Breecouter','ecouterD.gif');
+  
+  
+}
+function init() {
+  //console.log("menu init");
+  //parent.ba.document.getElementById("enCours").innerHTML="";
+}
+
+</script> 
+</head>
+<body >
+<div class = "bordnoir">
+<div class = "bordvert bgC1" style="border-radius: 25px;">
+
+<div id='verticalContainerG'>
+<div unselectable="on" class='unselectable' Id ="application" style="font-size:24px; vertical-align:middle; text-align:center; " >Orthographe grammaticale</div>
+</div>
+<div id='verticalContainerD'>
+<div unselectable="on" class='unselectable' Id ="module" style="font-size:24px; vertical-align:middle; text-align:center; " >V 0.47</div>
+</div>
+
+<div style="position:absolute; top:5px; left:50px;width:980px;height:40px;">
+ <div unselectable="on" class='unselectable' Id ="titre" style="font-size:24px;  text-align:center;"></div>
+</div>
+
+<div>
+<img unselectable="on" src="fondM1c.gif" width="980px" height="600px" style="position:absolute;top:50px; left:50px;">
+
+<div unselectable="on" class = "zoneCentrale" style='opacity: 0.8;' id="zm"></div>
+</div>
+
+
+</div>
+</div>
+
+</body>
+
+</html>

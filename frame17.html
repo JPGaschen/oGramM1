@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Orthographe grammaticale</title>
+<script type="text/javascript" src="jquery.js"></script>
+
+<script type="text/javascript" src="oGram17.js"></script>
+<script type="text/javascript" src="boutons17.js"></script>
+
+<link rel="stylesheet" type="text/css" href="oGramM1.css">
+
+<style type="text/css"> 
+
+
+div.textinput {
+ position: absolute;
+ top: 265px; left: 50px;
+ height: 70px; width: 880px;
+ background-color: #00ff00;
+ z-index: 2;}
+
+div.bouton {
+ position: absolute;
+ 
+ text-align:center;
+ background-color: #00ff00;
+ z-index: 2;}
+ 
+
+
+</style>
+<script language=javascript>
+
+$(window).load(function(){
+  //parent.ajusteVert();
+  $(document).contextmenu(function (e) {
+     //console.log(e);
+     return false;
+  });
+  init();
+});
+
+</script>
+</head>
+
+<body unselectable='on' class='unselectable'>
+
+<div class = "bordnoir">
+<div class = "bordvert bgC1" style="border-radius: 25px;">
+<div id='verticalContainerG'>
+<div unselectable='on' Id ="application" style="font-size:24px; vertical-align:middle; text-align:center; " >Orthographe grammaticale</div>
+</div>
+<div id='verticalContainerD'>
+<div unselectable='on' Id ="module" style="font-size:24px; vertical-align:middle; text-align:center; " ></div>
+</div>
+<div style="position:absolute; top:5px; left:50px;width:980px;height:40px;">
+ <div unselectable='on' Id ="titre" style="font-size:24px;vertical-align:middle;text-align:center"></div>
+</div>
+
+<div class="zoneCentrale bgC2" id="bordBlanc">
+<div Id="phraseDiv" class="textinput bgC1">
+  <div unselectable='on' class="bgC1" Id ="phrase" style="position:absolute; padding: 13px 25px 14px 25px; font-size:30px;"> ></div>
+</div>
+
+
+<div  unselectable='on' Id="bCorrect" class='bouton bgC1' style="font-size:26px;position:absolute;top:440px;left:295px;width:130px;" onclick = "javascript:validerOK();"  type="button">Correct</div>
+<div  unselectable='on' Id="bIncorrect" class='bouton bgC1' style="font-size:26px;position:absolute;top:440px;left:555px;width:130px;" onclick = "javascript:validerKO();"  type="button">Incorrect</div>
+
+<img id="pointerimg" style="visibility:hidden;position:absolute;top:710px;left:500px;z-index:20;" SRC="fing5_nw.gif" />
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

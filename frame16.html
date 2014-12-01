@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Orthographe grammaticale</title>
+<script type="text/javascript" src="jquery.js"></script>
+
+<script type="text/javascript" src="oGram16.js"></script>
+<script type="text/javascript" src="boutons16.js"></script>
+
+<link rel="stylesheet" type="text/css" href="oGramM1.css">
+
+<style type="text/css"> 
+
+
+div.textinput {
+ position: absolute;
+ top: 265px; left: 50px;
+ height: 70px; width: 880px;
+ z-index: 2;}
+ 
+ </style>
+<script language=javascript>
+
+$(window).load(function(){
+  //parent.ajusteVert();
+  init();
+  $(document).contextmenu(function (e) {
+     //console.log(e);
+     return false;
+  });
+});
+
+</script>
+</head>
+
+<body unselectable='on'>
+
+<div class = "bordnoir">
+<div class = "bordvert bgC1" style="border-radius: 25px;">
+<div id='verticalContainerG'>
+<div unselectable='on' Id ="application" style="font-size:24px; vertical-align:middle; text-align:center; " >Orthographe grammaticale</div>
+</div>
+<div id='verticalContainerD'>
+<div unselectable='on' Id ="module" style="font-size:24px; vertical-align:middle; text-align:center; " ></div>
+</div>
+<div style="position:absolute; top:5px; left:50px;width:980px;height:40px;">
+ <div unselectable='on' Id ="titre" style="font-size:24px;vertical-align:middle;text-align:center"></div>
+</div>
+
+<div class="zoneCentrale bgC2" id="bordBlanc">
+<div Id="phraseDiv" class="textinput bgC1" >
+  <div Id ="phrase" class="bgC1" spellcheck="false" style="position:absolute;padding: 13px 25px 14px 25px; font-size:30px;" contentEditable='true' scrolling = no></div>
+</div>
+
+
+
+
+<div class="bgC2" Id="Nouveau" style="visibility:hidden;position:absolute;top:250px;left:50px;z-index:20;font-size:30px;">Nouveau</div>
+<div Id="Ancien" class="bgC1" style="visibility:hidden;position:absolute;top:391px;left:50px;z-index:10;font-size:30px;">Ancien</div>
+<img id="pointerimg" style="visibility:hidden;position:absolute;top:710px;left:500px;z-index:20;" SRC="fing5_nw.gif" />
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
