@@ -13,6 +13,7 @@ var gNbRate = 0;
 var gPhase = 1;
 var gIgnoreClick = false;
 var gInfoCompl = false;
+var gNbMots = 0;
 
 function init() {
   //console.log("init 11");
@@ -25,6 +26,7 @@ function init() {
   gNbPhrasesOk = 0;
   gNbMotsOk = 0;
   gNbMotsKo = 0;
+  
   
   parent.og.document.getElementById("titre").innerHTML =  parent.ba.titre;
   parent.og.document.getElementById("module").innerHTML =  parent.ba.module;
@@ -56,9 +58,14 @@ function init() {
 }
 
 function diffusePhrase() {
+  var pc = parent.corpus;
+  var pcd = pc.corData;
   //console.log("diffusePhrase");
   parent.disableBouton('Bvalider','validerD.gif');
   //document.getElementById('Brejouer').style.visibility='hidden';
+  var nbCarres = pcd[pc.iData].length - 1;
+  gNbMots += nbCarres;
+  parent.ba.showCarres(nbCarres,0);
   rediffusePhrase();
 }
 function rediffusePhrase() {
@@ -88,6 +95,7 @@ function rediffusePhrase() {
   //console.log(fname);
   //parent.og.document.getElementById("titre").innerHTML = fname;
   parent.play_sound(fname);
+  gNbErrors = 0;
 }
 
 function continuer() {
@@ -98,7 +106,7 @@ function continuer() {
     if ($('.hidden',frames[0].document).length == 0) document.getElementById("Bcontinuer").innerHTML = 'Quitter';
   } else {
     parent.ba.init();
-    parent.og.location = 'menu.html?version=47';
+    parent.og.location = 'menu.html?version=48';
     
   }
   $('body',frames['Resume2'].document).scrollTop(3000);
@@ -142,7 +150,7 @@ function auSuivant() {
     if (parent.isDemo) {
       setTimeout(parent.boutons.showMenu,2000);
     } else {
-        var nEx = pc.corData.length;
+        var nEx = gNbMots;
         var nOk = nEx - gNbRate;
         parent.boutons.pageResultats(nOk, nEx);
         //alert(nOk.toString() + " exercices réussis du premier coup sur " + nEx.toString());
@@ -150,7 +158,7 @@ function auSuivant() {
         //alert("fini")};
         
         
-        //if (parent.ba.serie == 4)  parent.og.location = "resumeFrame" + parent.ba.program+ parent.ba.activity + ".html?version=47";
+        //if (parent.ba.serie == 4)  parent.og.location = "resumeFrame" + parent.ba.program+ parent.ba.activity + ".html?version=48";
         //else setTimeout(parent.boutons.showMenu,2000);
     }
   } 
@@ -180,10 +188,11 @@ function process_click_global(w){
   if (i < pcd.length && j+1 < pcd[i].length){
     //alert("clique dans " + cl + " " +i+ " " + j + " " + pcd[i].length);
     var exp =  pcd[i][j+1];
+    var id = "c" + (pc.jData +1);
     if (cl == exp) {
-      gNbMotsOk += 1;
-      ////console.log("pcg gNbMotsOk " + gNbMotsOk.toString());
-     
+      if (gNbErrors == 0) {
+        parent.ba.document.getElementById(id).style.backgroundColor = "#00ff00";
+      }
       var txt1 = pcd[i][0];
       var txt2 = txt1.replace(/,/g,"");
       var txt3 = txt2.replace(/-/g," ");
@@ -216,6 +225,7 @@ function process_click_global(w){
       
       
       j += 1;
+      gNbErrors = 0;
       parent.corpus.jData = j;
       if (j+1 == pcd[i].length) {
         //gIgnoreClick = true;
@@ -233,11 +243,15 @@ function process_click_global(w){
         
       }
     } else {
-      gNbMotsKo += 1;
-      
+      if (gNbErrors == 0) {
+        parent.ba.document.getElementById(id).style.backgroundColor = "#ff0000";
+        gNbRate +=1;
+        //console.log(gNbRate);
+        gNbErrors = 1;
+      }
       
     }
-  } else gNbMotsKo += 1;
+  }
   //window.setTimeout(clearBGC,400);
 }
 

@@ -279,7 +279,7 @@ function continuer() {
     if ($('.hidden',frames[0].document).length == 0) document.getElementById("Bcontinuer").innerHTML = 'Quitter';
     } else {
       parent.ba.init();
-      parent.og.location = 'menu.html?version=47';
+      parent.og.location = 'menu.html?version=48';
      
     }
  
@@ -383,9 +383,9 @@ function auSuivant() {
     
     var nEx = pc.corData.length - pc.nPhase1;
     var nOk = nEx - gNbRate;
-    parent.boutons.pageResultats(nOk, nEx);
+    setTimeout(function() {parent.boutons.pageResultats(nOk, nEx);},500);
     //alert(nOk.toString() + " exercices réussis du premier coup sur " + nEx.toString());
-    //if (parent.ba.serie == 6) parent.og.location = "resumeFrame" + parent.ba.program+ parent.ba.activity + ".html?version=47";
+    //if (parent.ba.serie == 6) parent.og.location = "resumeFrame" + parent.ba.program+ parent.ba.activity + ".html?version=48";
     //else setTimeout(parent.boutons.showMenu,4000);
   } else {
       ////console.log("auSuivant 4");  // fin de phase 1
@@ -550,7 +550,7 @@ function collapse(m,n) {
     } else if (m == 3) {
       var nEx = pc.nPhase1;
       var nOk = nEx - gNbRate;
-      parent.boutons.pageResultats(nOk, nEx);
+      setTimeout(function() {parent.boutons.pageResultats(nOk, nEx);},4000);
       //setTimeout(parent.boutons.showMenu,4000);
     }
   
@@ -564,7 +564,7 @@ function montreAbstractions01(m) {
 
   for (var i=1; i < spSuffix01.length; i++) {
    //alert("i="+i + " " + t[i]);
-   var tPos = 2 + (i-1)* 33;
+   var tPos = 5 + (i-1)* 35;
    suf = spSuffix01[i][m];
    if (suf == "") {suf="&nbsp"}
    
@@ -598,7 +598,7 @@ function montreAbstractions03(m,n) {
   var newTxt = "<div class='abstractions' style='visibility:hidden;margin-left:" + gLeftPos + "px; margin-right:auto;'>"
   for (var i=1; i <= n; i++) {
    //alert("i="+i + " " + t[i]);
-   var tPos = 2 + 33*(i-1);
+   var tPos = 5 + 35*(i-1);   // 2 + 33
    suf = spmfSuffix03[i][m];
    if (suf == "") {suf="&nbsp"}
    

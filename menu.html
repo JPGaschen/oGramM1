@@ -17,23 +17,13 @@
 
 <script type="text/javascript">
 
+var activites = [];
+
 $(window).load( function () {
   //parent.ajusteVert();
  ////console.log("menu ready");
  });
- 
-var activites =[
-   [],
-   ["Reconnaitre un nom, un déterminant, un adjectif",1,6,1],
-   ["Se familiariser avec les différentes sortes de noms",1,10,0],
-   ["Accorder les noms avec leurs déterminants",1,14,1],
-   ["Se familiariser avec les différentes sortes d'adjectifs",1,10,0],
-   ["Accorder les adjectifs avec les noms",1,12,1],
-   ["Maitriser l'accord déterminant, nom, adjectif",1,6,0],
-   ["Se tester",0,2,0]
-  ];
-  
-  
+
 var series = [
  [],
  [
@@ -128,7 +118,7 @@ var series = [
  ]
 ]
 
-
+ var prefixBouton = ['','D','P'];
 
 var firstSound = true;
 // document.onclick = function (event) {
@@ -141,6 +131,7 @@ $(document).ready( function () {
 });
 
 function initMenu () {
+  activites = parent.ba.activites; 
   var activity = parent.ba.activity;
   parent.ba.document.getElementById("Binformation").style.visibility = 'hidden';
   document.onclick = (function(e) {
@@ -218,7 +209,7 @@ function page2(activity) {
   parent.disableBouton('Bvalider','validerD.gif');
   parent.disableBouton('Breecouter','ecouterD.gif');
 
-  
+  var prefixBouton = ['','D','P'];
   var txt = "<div class='bgC1 unselectable' style='position:absolute; left:20px; font-size:32px; width:940px'>";
   if (activites[activity][1]) {
     //txt += "<a href='#' class='bgC1 unselectable' style='text-decoration: none; position:absolute; left:380px; top:60px; font-size:32px; line-height:90px; width:180px; color:#000000;border-style : solid; border-width : 1px; border-color: #000000; text-align: center' onClick='"+series[activity][1][0]+";'>"+series[activity][1][1]+"</a>";
@@ -241,21 +232,22 @@ function page2(activity) {
         txti = i.toString();
         if (i <= nSeries/2) {
           tPos = 205;
-          lPos = (940 - nSeries*45)/2 + (i-1)*100;
+          lPos = (940 - nSeries*50)/2 + (i-1)*100;
         }else {
           tPos = 305;
-          lPos = (940 - nSeries*45)/2 + (i-1 -nSeries/2)*100;
+          lPos = (940 - nSeries*50)/2 + (i-1 -nSeries/2)*100;
         }
       } else {
         var grp = 1+parseInt((i-1) / 2);
         var typ = 1 + ((i-1) % 2);
-        txti = grp.toString() + '-' + typ.toString();
+        //txti = grp.toString() + '-' + typ.toString();
+        txti = prefixBouton[typ] + grp.toString();
         if (i <= nSeries/2) {
           tPos = 205;
-          lPos = (940 - nSeries*45)/2 + (i-1)*100;
+          lPos = (940 - nSeries*50)/2 + (i-1)*100;
         }else {
           tPos = 305;
-          lPos = (940 - nSeries*45)/2 + (i-1 -nSeries/2)*100;
+          lPos = (940 - nSeries*50)/2 + (i-1 -nSeries/2)*100;
         }
       }
       //txt += "<a class='bgC1' draggable='false' href='#'  style='position:absolute; top:"+tPos+"px; left:"+lPos+"px; width:90px; height:90px; line-height:90px; color:#000000;text-decoration: none; border-style : solid; border-width : 1px; border-color: #000000; text-align: center' onClick='"+series[activity][k][0]+";'><span class='unselectable'>"+txti+"</span></a>";
@@ -299,12 +291,12 @@ function startDemo(l,m,n,k,g) {
   parent.ba.module = "Observer";
   
   if ((l==3 && m==4) || (l==4 && m==1)) {
-    var fname =  "corpus" + l.toString() + m.toString() + n.toString() + "Demo.html?version=47";
+    var fname =  "corpus" + l.toString() + m.toString() + n.toString() + "Demo.html?version=48";
   //console.log(fname);
-    parent.corpus.location = "corpus" + l.toString() + m.toString() + n.toString() + "Demo.html?version=47";
+    parent.corpus.location = "corpus" + l.toString() + m.toString() + n.toString() + "Demo.html?version=48";
     //parent.ba.document.getElementById("enCours").innerHTML="Programme " +  l.toString() + " Activité " + m.toString() + " Série " + n.toString() + " Observer ";
   } else {
-    parent.corpus.location = "corpus" + l.toString() + m.toString() + "Demo.html?version=47";
+    parent.corpus.location = "corpus" + l.toString() + m.toString() + "Demo.html?version=48";
     //parent.ba.document.getElementById("enCours").innerHTML="Programme " +  l.toString() + " Activité " + m.toString() + " Observer ";
   }
   parent.enableBouton('displayMenu','menuC.gif');
@@ -316,9 +308,9 @@ function startDemo(l,m,n,k,g) {
   $(parent.corpus.contentDocument).ready(function() {
     //parent.ajusteVert();
     //console.log("corpus is ready in menu demo");
-    //parent.og.location = "startPage" + l + ".html?version=47";
-  //parent.og.location = "frame" +  l + m + ".html?version=47";
-    //parent.boutons.location = "boutons.html?version=47"; 
+    //parent.og.location = "startPage" + l + ".html?version=48";
+  //parent.og.location = "frame" +  l + m + ".html?version=48";
+    //parent.boutons.location = "boutons.html?version=48"; 
   });
   
 }
@@ -328,11 +320,11 @@ function startSerie(l,m,n,k,g) {
   var enCoursPhase = [
     [],
     [""," Expérimenter"," S'évaluer"],
-    [""," Expérimenter"," S'évaluer"],
-    [""," Expérimenter"," S'évaluer"],
-    [""," Expérimenter"," S'évaluer"],
-    [""," Expérimenter"," S'évaluer"],
-    [""," Expérimenter"," S'évaluer"],
+    [""," Associer"," S'évaluer"],
+    [""," Découvrir"," Pratiquer"],
+    [""," Associer"," S'évaluer"],
+    [""," Découvrir"," Pratiquer"],
+    [""," Pratiquer"," S'évaluer"],
     [""," Expérimenter"," S'évaluer"]
   ];
   
@@ -347,11 +339,11 @@ function startSerie(l,m,n,k,g) {
   
   if (k) {
     parent.gPhase = k;
-    phaseTxt = enCoursPhase[l][k];
+    phaseTxt = enCoursPhase[m][k];
   }
   if (g) {
     parent.ba.group = g;
-    txtn = g.toString() + '-' + k.toString();
+    txtn = prefixBouton[k] + g.toString();
   }
 
   parent.isDemo = false;
@@ -361,7 +353,7 @@ function startSerie(l,m,n,k,g) {
   else parent.ba.titre = m.toString() + '- ' + activites[m][0];
   if (m < 7) parent.ba.module = "Série " + txtn + phaseTxt;
   else parent.ba.module =  series[m][n][1] + ' ' + phaseTxt;
-  parent.corpus.location = "corpus" + l.toString() + m.toString() + n.toString() + ".html?version=47";
+  parent.corpus.location = "corpus" + l.toString() + m.toString() + n.toString() + ".html?version=48";
   
   parent.enableBouton('displayMenu','menuC.gif');
   
@@ -371,8 +363,8 @@ function startSerie(l,m,n,k,g) {
   
   $(parent.corpus.contentDocument).ready(function() {
   //console.log("corpus is ready in menu serie");
-    //parent.og.location = "frame" +  l + m + ".html?version=47";
-    //parent.boutons.location = "boutons.html?version=47";
+    //parent.og.location = "frame" +  l + m + ".html?version=48";
+    //parent.boutons.location = "boutons.html?version=48";
   });
 
 }
@@ -381,12 +373,12 @@ function displayResume(l,m) {
   parent.boutons.menuLevel = 2;
   //parent.ajusteVert();
   //console.log("displayResume");
-  //parent.boutons.location = "boutons.html?version=47";
+  //parent.boutons.location = "boutons.html?version=48";
   parent.ba.program = l;
   parent.ba.activity = m;
   parent.ba.titre = "GN " + m + " - " + parent.ba.activites[m][0];
   parent.ba.module = 'Résumé';
-  parent.og.location = "resumeFrame" +  l + m + ".html?version=47";
+  parent.og.location = "resumeFrame" +  l + m + ".html?version=48";
 
   //parent.ba.document.getElementById("enCours").style.visibility="visible";
   //parent.ba.document.getElementById("enCours").innerHTML="Programme " +  l.toString() + " Activité " + m.toString() + " Résumé ";
@@ -410,7 +402,7 @@ function init() {
 <div unselectable="on" class='unselectable' Id ="application" style="font-size:24px; vertical-align:middle; text-align:center; " >Orthographe grammaticale</div>
 </div>
 <div id='verticalContainerD'>
-<div unselectable="on" class='unselectable' Id ="module" style="font-size:24px; vertical-align:middle; text-align:center; " >V 0.47</div>
+<div unselectable="on" class='unselectable' Id ="module" style="font-size:24px; vertical-align:middle; text-align:center; " >V 0.48</div>
 </div>
 
 <div style="position:absolute; top:5px; left:50px;width:980px;height:40px;">

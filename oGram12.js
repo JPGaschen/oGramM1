@@ -342,7 +342,7 @@ function continuer() {
     if ($('.hidden',frames[0].document).length == 0) document.getElementById("Bcontinuer").innerHTML = 'Quitter';
     } else {
       parent.ba.init();
-      parent.og.location = 'menu.html?version=47';
+      parent.og.location = 'menu.html?version=48';
     }
  
   frames['Resume2'].window.scrollTo(0,3000); //window.scrollTo(0,3000); //

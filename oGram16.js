@@ -21,6 +21,7 @@ var gsavedPhrase;
 var gPhrase;
 var gChars = [[]];
 var gGrise = '#dddddd';
+var charsAvant = 0;
 
 
 
@@ -141,15 +142,26 @@ function init() {
     var range = window.getSelection().getRangeAt(0);
     var pos = getCharacterOffsetWithin(range, el);
     
+    
+    //console.log('charsAvant ' + charsAvant);
+  
+    
     currentPhrase = $("#phrase").text();
     var char1 = currentPhrase.charAt(pos-1);
     var char0 = currentPhrase.charAt(pos);
     //console.log(pos + ' /' + char0 + '/' + char1);
-    if (char0 == ',') {
-      //console.log("not inserting before coma");
+
+    var nouvLen = pcd[pc.iData][1].length;
+    //console.log(nouvLen + ' ' + pos + ' ' + charsAvant);
+  //console.log(nouvLen + ' /'+ currentPhrase.substring(pos,pos+nouvLen) + '/');
+   //if (currentPhrase.substring(pos-nouvLen,pos) == pcd[pc.iData][1]) {
+    if (pos == charsAvant || pos == charsAvant + nouvLen) {
+      
+      //console.log("not inserting before or after nouveau");
       e.preventDefault();
       return false;
     }
+
     if (char1 == ',') {
       //console.log("not inserting after coma");
       e.preventDefault();
@@ -159,6 +171,7 @@ function init() {
     //console.log(charStr);
     if (/[a-zàâäéèêëîïôöùûü]/.test(charStr)) {
       //console.log('a letter');
+      if (pos < charsAvant) charsAvant +=1;
       return true;
     } else {
       e.preventDefault();
@@ -185,6 +198,8 @@ function init() {
     var range = window.getSelection().getRangeAt(0);
     var pos = getCharacterOffsetWithin(range, el);
     //console.log('pos ' + pos);
+   
+    //console.log(el.innerHTML);
     
     //var currentPhrase = document.getElementById("phrase").innerHTML;
     currentPhrase = $("#phrase").text();
@@ -237,6 +252,7 @@ function init() {
       e.preventDefault();
       return false;
     }
+    if (pos < charsAvant && (keyCode == 8 || keyCode == 46)) charsAvant -= 1;
     return true;
   });
  
@@ -304,6 +320,7 @@ function rediffusePhrase () {
   var phraseTxt = '';
   var phraseAvant = '';
   var phraseApres = '';
+  charsAvant = 0;
   var jMot = pcd[i][2]-1;
   //console.log(mots[jMot]);
   if (mots[jMot] == "s'") jMot += 1;
@@ -317,9 +334,13 @@ function rediffusePhrase () {
     //if (j < mots.length - 1 && mots[j+1] != ',') phraseTxt += ' ';
     if (j < jMot) phraseAvant += "<span>" + mots[j] + "</span>";
     if (j > jMot ) phraseApres += "<span>" + mots[j] + "</span>";
+    if (j < jMot) charsAvant += mots[j].length;
     
   }
-  if (phraseAvant != '') phraseAvant += ' ';
+  if (phraseAvant != '') {
+    phraseAvant += ' ';
+    charsAvant +=1;
+  }
   //console.log(phraseAvant);
   //console.log(phraseApres);
   //gPhrase = phraseAvant + "<span id='nnn' contentEditable='false' style='color:"+parent.bgC1+";'>" + pcd[i][1] +"</span>" + phraseApres;
@@ -466,7 +487,7 @@ function continuer() {
     if ($('.hidden',frames[0].document).length == 0) document.getElementById("Bcontinuer").innerHTML = 'Quitter';
     } else {
       parent.ba.init();
-      parent.og.location = 'menu.html?version=47';
+      parent.og.location = 'menu.html?version=48';
       
     }
  

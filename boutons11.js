@@ -9,10 +9,11 @@ function valider() {
   var id = "c" + (pc.iData +1);
   var program = parent.ba.program;
   var activity = parent.ba.activity;
-//console.log("valider gNbMotsOk " + gNbMotsOk);
-//console.log("valider gNbMotsKo " + gNbMotsKo);
-  ////console.log("valider nmots " + pcd[pc.iData].length.toString());
-  if (gNbMotsOk ==  pcd[parent.ranData(pc.iData)].length - 1 ) {
+  if (activity == 1) {
+    gNbErrors = 0;
+
+    setTimeout(auSuivant,1000);  // à cause de safari...
+  } else if (gNbMotsOk ==  pcd[parent.ranData(pc.iData)].length - 1 ) {
     
     if (gNbErrors == 0 && gNbRejoues < 2 && gNbMotsKo == 0) {
       parent.ba.document.getElementById(id).style.backgroundColor = "#00ff00";

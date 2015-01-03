@@ -134,7 +134,7 @@ function continuer() {
     if ($('.hidden',frames[0].document).length == 0) document.getElementById("Bcontinuer").innerHTML = 'Quitter';
     } else {
       parent.ba.init();
-      parent.og.location = 'menu.html?version=47';
+      parent.og.location = 'menu.html?version=48';
       
     }
  

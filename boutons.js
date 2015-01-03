@@ -47,7 +47,7 @@ function showMenu() {
 
   parent.ba.hideCarres();
 
-  parent.og.location = 'menu.html?version=47';
+  parent.og.location = 'menu.html?version=48';
 }
 
 function displayResume() {
