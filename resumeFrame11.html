@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Orthographe grammaticale</title>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.nicescroll.js"></script>
 
 <script type="text/javascript" src="oGram11.js?version=48"></script>
 
@@ -53,6 +54,16 @@ function initResume() {
   document.getElementById("module").innerHTML = parent.ba.module;
   
 }
+
+$(document).ready(
+
+  function() { 
+
+    $("html").niceScroll();
+
+  }
+
+);
 
 </script>
 </head>
