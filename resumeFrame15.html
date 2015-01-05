@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Orthographe grammaticale</title>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.nicescroll.js"></script>
 
 <script type="text/javascript" src="oGram15.js?version=48"></script>
 
@@ -19,10 +20,6 @@ div.resume{
  z-index: 10;
 }
  
-div.resume2{
-  overflow: scroll;
- overflow-x: hidden;
- -webkit-overflow-scrolling: touch;}
 
 </style>
 
@@ -51,6 +48,12 @@ function initResume() {
   document.getElementById("module").innerHTML = parent.ba.module;
   
 }
+
+$(document).ready( function() { 
+  if (navigator.platform == 'iPad') {
+    $("#Resume").niceScroll("#Resume2",{touchbehavior:true});
+  } 
+});
 
 </script>
 </head>

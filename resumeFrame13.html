@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Orthographe grammaticale</title>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.nicescroll.js"></script>
 
 <script type="text/javascript" src="oGram13.js?version=48"></script>
 
@@ -49,7 +50,11 @@ function initResume() {
   document.getElementById("titre").innerHTML = parent.ba.titre;
   document.getElementById("module").innerHTML = parent.ba.module;
 }
-
+$(document).ready( function() { 
+  if (navigator.platform == 'iPad') {
+    $("#Resume").niceScroll("#Resume2",{touchbehavior:true});
+  } 
+});
 </script>
 </head>
 <body unselectable='on' class='unselectable' onLoad="javascript:initResume();">
