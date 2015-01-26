@@ -22,6 +22,7 @@ var gPhrase;
 var gChars = [[]];
 var gGrise = '#dddddd';
 var charsAvant = 0;
+var gNbMots;
 
 
 
@@ -123,6 +124,8 @@ function init() {
   parent.og.document.getElementById("titre").innerHTML =  parent.ba.titre;
   parent.og.document.getElementById("module").innerHTML =  parent.ba.module;
   
+  parent.boutons.showResume = '';
+   
   //document.getElementById("Nouveau").style.backgroundColor=parent.bgC1;
   //document.getElementById("Ancien").style.backgroundColor=parent.bgC2;
   
@@ -169,7 +172,7 @@ function init() {
     }
     var charStr = String.fromCharCode(keyCode);
     //console.log(charStr);
-    if (/[a-zàâäéèêëîïôöùûü]/.test(charStr)) {
+    if (/[a-z àâäéèêëîïôöùûü]/.test(charStr)) {
       //console.log('a letter');
       if (pos < charsAvant) charsAvant +=1;
       return true;
@@ -241,10 +244,12 @@ function init() {
       return false;
     }
     if (keyCode == 32) {    // spaceBar
-      
-        //console.log("not inserting a space");
-        e.preventDefault();
-        return false;
+        //console.log("space " + gNbMots + " " + compteMots($('#phrase').text()));
+        if (compteMots($('#phrase').text()) >= gNbMots) {
+          //console.log("not inserting a space");
+          e.preventDefault();
+          return false;
+        } else return true;
     }
     
     if (keyCode == 13) {   // return
@@ -344,7 +349,7 @@ function rediffusePhrase () {
   //console.log(phraseAvant);
   //console.log(phraseApres);
   //gPhrase = phraseAvant + "<span id='nnn' contentEditable='false' style='color:"+parent.bgC1+";'>" + pcd[i][1] +"</span>" + phraseApres;
-  gPhrase = phraseAvant + "<span id='nnn' contentEditable='false' style='background-color:"+parent.bgC2+";'>" + pcd[i][1] +"</span>" + phraseApres;
+  gPhrase = phraseAvant + "<span id='nnn' contentEditable='false' class='bgC2' style='color: #000000;'>" + pcd[i][1] +"</span>" + phraseApres;
   //gPhrase = phraseAvant + "<span id='nnn'>" + pcd[i][1] +"</span>" + phraseApres;
   //console.log(phraseTxt);
   //console.log(gPhrase);
@@ -363,8 +368,9 @@ function rediffusePhrase () {
   //console.log(mot.innerHTML);
   //console.log(mot.offsetLeft);
 
-  var leftOffset = 70 + mot.offsetLeft;
-  if (pcd[i][2] > 1) leftOffset = 80 + mot.offsetLeft;
+  var leftOffset = 50 + mot.offsetLeft;
+  if (pcd[i][2] > 1) leftOffset = 58 + mot.offsetLeft;
+  
   var nouv = document.getElementById('Nouveau');
   nouv.style.left = '' + leftOffset + 'px';
   nouv.innerHTML = pcd[i][1].replace(/-/,"");
@@ -427,7 +433,7 @@ function move() {
     gMot.style.color = '#000000';
     document.getElementById("Nouveau").innerHTML = pcd[parent.ranData(pc.iData)][1];
     //console.log("'" + document.getElementById("Nouveau").innerHTML + "'");
-    document.getElementById("Nouveau").style.backgroundColor= '#ff0000'; //parent.bgC2;
+    document.getElementById("Nouveau").style.backgroundColor= parent.bgC2;
     document.getElementById("Nouveau").style.visibility='hidden';
   //console.log(document.getElementById('phrase').innerHTML);
   //console.log($('#phrase').text());
@@ -435,6 +441,8 @@ function move() {
     //console.log(gPhrase);
     //if (parent.isDemo) 
     document.getElementById('phrase').innerHTML = gPhrase;
+    gNbMots = compteMots($('#phrase').text());
+    //console.log(gNbMots);
   }
 }
 
@@ -537,7 +545,9 @@ function auSuivant() {
         var nOk = nEx - gNbRate;
         document.getElementById("Ancien").style.visibility = 'hidden';
         document.getElementById("Nouveau").style.visibility = 'hidden';
-        parent.boutons.pageResultats(nOk, nEx);
+        setTimeout(function() {parent.boutons.pageResultats(nOk, nEx);},500);
+        
+
         //alert(nOk.toString() + " exercices réussis du premier coup sur " + nEx.toString());
       }
       //setTimeout(parent.boutons.showMenu,4000);

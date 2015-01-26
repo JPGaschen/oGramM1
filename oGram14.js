@@ -79,7 +79,9 @@ function init() {
  
   gX0 = 490;
   gY0 = 500;
- 
+  
+  parent.boutons.showResume = '';
+  
   parent.og.document.getElementById("titre").innerHTML =  parent.ba.titre;
   parent.og.document.getElementById("module").innerHTML =  parent.ba.module;
   parent.gPhraseOrder = parent.randsort(24);
@@ -93,8 +95,8 @@ function init() {
      //console.log(id);
      var mot = document.getElementById(id);
 
-     var lefti = 0 + 220 * (i % 4);
-     var topi = 0 + 76 * parseInt(i/4);
+     var lefti = 100 + 220 * (i % 4);
+     var topi = 122 + 76 * parseInt(i/4);
      mot.style.left = "" + lefti+"px";
      mot.style.top = "" + topi+"px";
      mot.style.color = "#000000";
@@ -279,7 +281,7 @@ function selectMot(id,iMot,txt) {
     
       if (txt == mots[0]) {
         selectedMasculin = k;
-        document.getElementById(id).style.color = '#777777';
+        document.getElementById(id).style.color = '#ffffff';
       } else {
         gSelErrors += 1;
         //console.log("pas un singulier");
@@ -299,7 +301,7 @@ function selectMot(id,iMot,txt) {
         //console.log(phraseTxt);
         document.getElementById('phrase').innerHTML = phraseTxt;
         selectedMasculin = 0;
-        document.getElementById(id).style.color = '#777777';
+        document.getElementById(id).style.color = '#ffffff';
         parent.enableBouton('Bvalider','validerC.gif');
   
         setTimeout(efface,2200);
@@ -387,7 +389,8 @@ function auSuivant() {
         var nEx = 2*pc.corData.length;
         var nOk = nEx - gNbRate;
         
-        parent.boutons.pageResultats(nOk, nEx);
+        setTimeout(function() {parent.boutons.pageResultats(nOk, nEx);},500);
+        
         //alert(nOk.toString() + " exercices réussis du premier coup sur " + nEx.toString());
       }
       //setTimeout(parent.boutons.showMenu,4000);

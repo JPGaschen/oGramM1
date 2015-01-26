@@ -72,6 +72,8 @@ function init() {
   parent.og.document.getElementById("titre").innerHTML = parent.ba.titre;
   parent.og.document.getElementById("module").innerHTML =  parent.ba.module;
 
+  parent.boutons.showResume = '';
+ 
   if (parent.gPhase == 1) {
     gPhase = 1
     var pc = parent.corpus;
@@ -87,7 +89,7 @@ function init() {
   
   //top.moveTo(0,0); 
   //top.resizeTo(1280,800); 
-
+ 
     clear_all();
 
     // abstractions pour les noms
@@ -384,7 +386,9 @@ function auSuivant() {
     var nEx = pc.corData.length - pc.nPhase1;
     var nOk = nEx - gNbRate;
     setTimeout(function() {parent.boutons.pageResultats(nOk, nEx);},500);
-    //alert(nOk.toString() + " exercices réussis du premier coup sur " + nEx.toString());
+    if (parent.ba.serie == parent.ba.nSeries/2)
+      parent.boutons.showResume = "resumeFrame" + parent.ba.program+ parent.ba.activity + ".html?version=48";
+            //alert(nOk.toString() + " exercices réussis du premier coup sur " + nEx.toString());
     //if (parent.ba.serie == 6) parent.og.location = "resumeFrame" + parent.ba.program+ parent.ba.activity + ".html?version=48";
     //else setTimeout(parent.boutons.showMenu,4000);
   } else {

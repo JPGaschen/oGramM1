@@ -1,5 +1,6 @@
 
 var menuLevel = 0;
+var showResume = '';
 
 function init() {
   //console.log("init boutons level " + menuLevel);
@@ -44,10 +45,14 @@ function showMenu() {
   //console.log("showMenu");
   init();
   //parent.ba.location.reload();
-
+  //console.log(showResume);
   parent.ba.hideCarres();
 
-  parent.og.location = 'menu.html?version=48';
+  if (showResume != '') {
+    parent.og.location = showResume;
+    showResume = '';
+  } else parent.og.location = 'menu.html?version=48';
+
 }
 
 function displayResume() {

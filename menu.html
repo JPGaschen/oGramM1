@@ -133,7 +133,7 @@ $(document).ready( function () {
 function initMenu () {
   activites = parent.ba.activites; 
   var activity = parent.ba.activity;
-  parent.ba.document.getElementById("Binformation").style.visibility = 'hidden';
+  //parent.ba.document.getElementById("Binformation").style.visibility = 'hidden';
   document.onclick = (function(e) {
     //alert(firstSound); 
     if (firstSound) {
@@ -221,10 +221,15 @@ function page2(activity) {
   var txti;
 
   var nSeries = activites[activity][2];
+  parent.ba.aResume = activites[activity][3];
+  parent.ba.nSeries = nSeries;
+  //console.log("nSeries " + parent.ba.nSeries);
+  var infoBulle = '';
   if (activity < 7) {
     for (var i=1; i<=nSeries; i++)  {
       var k = i + activites[activity][1];
-      if (nSeries < 9){
+      //if (nSeries < 9){
+      if (activity == 1 || activity == 6) {
         tPos = 255;
         lPos = (940 - nSeries*90 - (nSeries -1)* 10)/2 + (i-1)*100;
         txti = i.toString();
@@ -242,16 +247,24 @@ function page2(activity) {
         var typ = 1 + ((i-1) % 2);
         //txti = grp.toString() + '-' + typ.toString();
         txti = prefixBouton[typ] + grp.toString();
-        if (i <= nSeries/2) {
+        //if (i <= nSeries/2) {
+        //  tPos = 205;
+        //  lPos = (940 - nSeries*50)/2 + (i-1)*100;
+        //}else {
+        //  tPos = 305;
+       //   lPos = (940 - nSeries*50)/2 + (i-1 -nSeries/2)*100;
+        //}
+        lPos = (940 - nSeries*50)/2 + (grp - 1)*100;
+        if (typ == 1) {
           tPos = 205;
-          lPos = (940 - nSeries*50)/2 + (i-1)*100;
-        }else {
+          infoBulle = "title =  'Découvrir les terminaisons' ";
+        } else {
           tPos = 305;
-          lPos = (940 - nSeries*50)/2 + (i-1 -nSeries/2)*100;
+          infoBulle = "title = 'Pratiquer les terminaisons' ";
         }
       }
       //txt += "<a class='bgC1' draggable='false' href='#'  style='position:absolute; top:"+tPos+"px; left:"+lPos+"px; width:90px; height:90px; line-height:90px; color:#000000;text-decoration: none; border-style : solid; border-width : 1px; border-color: #000000; text-align: center' onClick='"+series[activity][k][0]+";'><span class='unselectable'>"+txti+"</span></a>";
-      txt += "<a class='bgC1' draggable='false' href='#'  style='position:absolute; top:"+tPos+"px; left:"+lPos+"px; width:90px; height:90px; line-height:90px; color:#000000;text-decoration: none; border-style : solid; border-width : 1px; border-color: #000000; text-align: center;border-radius: 25px;' onClick='"+series[activity][k][0]+";'><span class='unselectable'>"+txti+"</span></a>";
+      txt += "<a class='bgC1' " + infoBulle + " draggable='false' href='#'  style='position:absolute; top:"+tPos+"px; left:"+lPos+"px; width:90px; height:90px; line-height:90px; color:#000000;text-decoration: none; border-style : solid; border-width : 1px; border-color: #000000; text-align: center;border-radius: 25px;' onClick='"+series[activity][k][0]+";'><span class='unselectable'>"+txti+"</span></a>";
     }
   } else {
     for (var i=1; i<=nSeries; i++)  {
@@ -410,9 +423,9 @@ function init() {
 </div>
 
 <div>
-<img unselectable="on" src="fondM1c.gif" width="980px" height="600px" style="position:absolute;top:50px; left:50px;">
+<img unselectable="on" src="aqua1.jpg" width="980px" height="600px" style="position:absolute;top:50px; left:50px;">
 
-<div unselectable="on" class = "zoneCentrale" style='opacity: 0.8;' id="zm"></div>
+<div unselectable="on" class = "zoneCentrale" style='opacity: 0.5;' id="zm"></div>
 </div>
 
 

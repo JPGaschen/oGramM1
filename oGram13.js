@@ -61,6 +61,8 @@ function init() {
   parent.og.document.getElementById("titre").innerHTML =  parent.ba.titre;
   parent.og.document.getElementById("module").innerHTML =  parent.ba.module;
 
+  parent.boutons.showResume = '';
+
   if (parent.gPhase == 1) {
     gPhase = 1;
     var pc = parent.corpus;
@@ -305,12 +307,13 @@ function auSuivant() {
       diffusePhrase();
     //}  
   } else if (gPhase == 2) {
-    ////console.log("auSuivant 3");  // fin de phase 2
+      //console.log("auSuivant 3 " + parent.ba.nSeries + " " + parent.ba.serie);  // fin de phase 2
       parent.disableBouton('Bvalider','validerD.gif');
       var nEx = pc.corData.length - pc.nPhase1;
       var nOk = nEx - gNbRate;
       setTimeout(function() {parent.boutons.pageResultats(nOk, nEx);},500);
-
+      if (parent.ba.serie == parent.ba.nSeries/2)
+        parent.boutons.showResume = "resumeFrame" + parent.ba.program+ parent.ba.activity + ".html?version=48";
       //alert(nOk.toString() + " exercices réussis du premier coup sur " + nEx.toString());
       //if (parent.ba.serie == 8)parent.og.location = "resumeFrame" + parent.ba.program+ parent.ba.activity + ".html?version=48";
       //else setTimeout(parent.boutons.showMenu,4000);

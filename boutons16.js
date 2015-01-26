@@ -17,12 +17,13 @@ function valider(n) {
   }
   //document.getElementById('phrase').innerHTML = document.getElementById('phrase').innerHTML.replace(/&nbsp;/, ' ');
   //console.log($('#phrase').text());
-  var phraseTxt = $('#phrase').text().replace(/\s\s/g, " &#63; ").replace(/\s/g, " ");
+  var phraseTxt = $('#phrase').text().replace(/\s\s/g, " &#63; ").replace(/\s/g, " ").replace(/,/," ,");
   //console.log(phraseTxt);
 
   var mots =phraseTxt.split(' ');
+  //console.log(mots[3]);
   //var mots = document.getElementById('phrase').innerHTML.split(' ');
-  var justesPoint = pcd[pc.iData+1][0].replace(/'/,"' ").replace(/-/,"- ").replace(/&apos;/, "'");
+  var justesPoint = pcd[pc.iData+1][0].replace(/'/,"' ").replace(/-/,"- ").replace(/&apos;/, "'").replace(/,/," ,");
   justes = justesPoint.split(' ');
 
   if (mots.length != justes.length) {
@@ -61,8 +62,9 @@ function valider(n) {
       for (var j=0; j<mots.length; j++)  {
         if (j == pcd[pc.iData][2] - 1) phraseTxt += "<span id='s"+j+"' style='background-color:"+gGrise+";' >"+ mots[j]+ "</span>";
         else phraseTxt += "<span id='s"+j+"' >"+ mots[j]+ "</span>";
-        if (j < mots.length - 1) phraseTxt += ' ';
+        if (j < mots.length - 1 && mots[j+1] != ',') phraseTxt += ' ';
       }
+      //console.log(phraseTxt);
       gsavedPhrase = document.getElementById('phrase').innerHTML;
       document.getElementById('phrase').innerHTML = phraseTxt;
       var obj =document.getElementById('s' + n);

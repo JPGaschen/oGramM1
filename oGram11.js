@@ -33,7 +33,7 @@ function init() {
   //top.moveTo(0,0); 
   //top.resizeTo(1280,800); 
   
-  
+  parent.boutons.showResume = '';
   clear_all();
   
   
@@ -152,12 +152,13 @@ function auSuivant() {
     } else {
         var nEx = gNbMots;
         var nOk = nEx - gNbRate;
-        parent.boutons.pageResultats(nOk, nEx);
+        setTimeout(function() {parent.boutons.pageResultats(nOk, nEx);},500);
         //alert(nOk.toString() + " exercices réussis du premier coup sur " + nEx.toString());
         if (nOk == nEx && parent.ba.serie > 1) alert("Vous pouvez, si vous le voulez, passer à l'activité suivante.");
         //alert("fini")};
         
-        
+        if (parent.ba.serie == parent.ba.nSeries)
+          parent.boutons.showResume = "resumeFrame" + parent.ba.program+ parent.ba.activity + ".html?version=48";
         //if (parent.ba.serie == 4)  parent.og.location = "resumeFrame" + parent.ba.program+ parent.ba.activity + ".html?version=48";
         //else setTimeout(parent.boutons.showMenu,2000);
     }

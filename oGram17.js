@@ -72,7 +72,9 @@ function init() {
  
   parent.og.document.getElementById("titre").innerHTML =  parent.ba.titre;
   parent.og.document.getElementById("module").innerHTML =  parent.ba.module;
-  
+
+  parent.boutons.showResume = '';
+
   $(".bouton").hover(function() { 
         $(this).css('cursor','pointer'); }, function() { 
         $(this).css('cursor','auto'); 
@@ -178,7 +180,8 @@ function auSuivant() {
       } else {
         var nEx = pc.corData.length;
         var nOk = nEx - gNbRate;
-        parent.boutons.pageResultats(nOk, nEx);
+        setTimeout(function() {parent.boutons.pageResultats(nOk, nEx);},500);
+        
         //alert(nOk.toString() + " exercices réussis du premier coup sur " + nEx.toString());
       }
       //setTimeout(parent.boutons.showMenu,4000);
